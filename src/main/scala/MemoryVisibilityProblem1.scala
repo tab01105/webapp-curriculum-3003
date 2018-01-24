@@ -10,7 +10,7 @@ object MemoryVisibilityProblem1 extends App {
 }
 
 class AsyncRunner1(private[this] val name: String, private[this] val canStart: () => Boolean) {
-  private[this] var isFinished = false
+  @volatile private[this] var isFinished = false
 
   def asyncRun(f: String => Unit): Unit = {
     new Thread(() => {
